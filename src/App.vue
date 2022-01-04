@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <code-input
-    @complete="completed = true"
+    @complete="(e: boolean) => completed = e"
     :fields="3"
     :fieldWidth="56"
     :fieldHeight="56"
