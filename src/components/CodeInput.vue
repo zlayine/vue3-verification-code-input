@@ -202,9 +202,7 @@ const onKeyDown = (e) => {
 const triggerChange = (values = values.value) => {
   const val = values.join("");
   emit("change", val);
-  if (val.length >= fields.value) {
-    emit("complete", val);
-  }
+  emit("complete", val.length >= fields.value);
 };
 
 initVals();
