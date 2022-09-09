@@ -68,6 +68,7 @@ const emit = defineEmits(["change", "complete"]);
 
 const KEY_CODE = {
   backspace: 8,
+  delete: 46,
   left: 37,
   up: 38,
   right: 39,
@@ -156,6 +157,21 @@ const onKeyDown = (e) => {
       } else if (prev) {
         vals[prevIndex] = "";
         inputs.value[prev].focus();
+        values.value = vals;
+        triggerChange(vals);
+      }
+      break;
+    }
+    case KEY_CODE.delete: {
+      e.preventDefault();
+      const vals = [...values.value];
+      if (values.value[index]) {
+        vals[index] = "";
+        values.value = vals;
+        triggerChange(vals);
+      } else if (next) {
+        vals[nextIndex] = "";
+        inputs.value[next].focus();
         values.value = vals;
         triggerChange(vals);
       }
